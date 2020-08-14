@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
+
+:root {
+    --primaryColor: #296ca8;
+    --secondaryColor: #ffffff
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primaryColor);
+    font-family: 'Baloo Tamma 2', cursive;
+    color: var(--secondaryColor);
+}
+
+header {
+    height: 100vh;
+    background-image: url(./img/snowflake.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-shadow: 0 0 4px black;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+header * {
+    z-index: 1;
+}
+
+.header-tittle {
+    padding: 0 10%;
+    text-align: center;
+    font-size: 32px;
+    line-height: 48px;
+}
+
+header h2 {
+
+    padding: 0 10%;
+    text-align: center;
+    /* font-size: 14px; */
+}
+
+.button-conteiner1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+
+}
+
+.header-btn {
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+    border: none;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.header-btn p {
+    font-size: 18px;
+    font-family: 'Baloo Tamma 2', cursive;
+    margin: auto;
+    text-align: center;
+    line-height: 36px;
+}
+
+.help-btn {
+    cursor: pointer;
+    font-size: 24px;
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* START SECTION  */
+.start-section {
+    height: 100vh;
+}
