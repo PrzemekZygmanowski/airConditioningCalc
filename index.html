@@ -18,22 +18,46 @@
             pomieszczeń oraz wstępnie określić wymaganą moc klimatyzatora dla pomieszczenia. Aby rozpocząć wybierz jedną
             z poniższych opcji lub wciśnij znak zapytania by uzyskać
             pomoc.</p> -->
-        <h2>Oblicz jaką moc powinien mieć Twój klimatyzator</h2>
+        <h2 class="header-tittle2">Oblicz jaką moc powinien mieć Twój klimatyzator</h2>
         <div class="button-conteiner1">
-            <!-- <button class="header-btn" id="login-btn">
-                <p>Zaloguj się</p>
-            </button> -->
-            <button class="header-btn" id="newproj-btn">
-                <p>Stwórz projekt</p>
+            <button class="header-btn" id="start-btn">
+                <p>Zaczynamy</p>
             </button>
         </div>
         <button class="help-btn" id="help-btn-header"><i class="far fa-question-circle"></i></button>
     </header>
 
     <div class="main-container" id="main-container">
+
         <section class="start-section" id="start-section">
-            <div class="start-container">
-                <div class="start-btns">
+            <button class="exit-btn main-btn" id="exit-btn"><i class="far fa-times-circle"></i></button>
+            <div class="start">
+                <h2>Zaloguj się</h2>
+                <p>Jeśli chcesz korzystać ze wszystkich dobrodziejstw aplikacji</p>
+                <button class="start-btn" id="login-btn">
+                    <p>Zaloguj się</p>
+                </button>
+            </div>
+            <div class="start">
+                <h2>Zarejestruj się</h2>
+                <p>Jeżeli nigdy tego nie robiłeś</p>
+                <button class="start-btn" id="registration-btn">
+                    <p>Zarejestruj się</p>
+                </button>
+            </div>
+            <div class="start">
+                <h2>Stwórz projekt</h2>
+                <p>Jeżeli chcesz szybko coś policzyć</p>
+                <button class="start-btn" id="newproj-btn">
+                    <p>Stwórz projekt</p>
+                </button>
+            </div>
+            <button class="help-btn" id="help-btn-start"><i class="far fa-question-circle"></i></button>
+        </section>
+
+        <!-- <section class="new-proj-section" id="new-proj-section">
+            <div class="new-proj-container">
+                <div class="new-proj-btns">
                     <button class="exit-project main-btn" id="exit-project"><i class="far fa-times-circle"></i></button>
                     <button class="save-project main-btn" id="save-project"><i class="far fa-save"></i></button>
                 </div>
@@ -54,7 +78,7 @@
                     <li><button class="room-btn" id="wall-btn"><i class="fas fa-door-closed"></i></button></li>
                 </ul>
             </div>
-        </section>
+        </section> -->
     </div>
     <footer></footer>
     <script src="main.js"></script>

@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
 
+/* zindex 
+1 - header *
+2 - main container
+3 - start section
+4 - new proj section
+5 - div
+6 - disactive div
+7 - active div  */
+
+
+
 :root {
     --primaryColor: #296ca8;
-    --secondaryColor: #ffffff
+    --secondaryColor: #ffffff;
+    --thirdColor: #212121
 }
 
 * {
@@ -15,6 +27,7 @@ body {
     background-color: var(--primaryColor);
     font-family: 'Baloo Tamma 2', cursive;
     color: var(--secondaryColor);
+    overflow-x: hidden;
 }
 
 header {
@@ -49,13 +62,13 @@ header * {
     text-align: center;
     font-size: 32px;
     line-height: 48px;
+    color: var(--secondaryColor);
 }
 
-header h2 {
-
+.header-tittle2 {
     padding: 0 10%;
     text-align: center;
-    /* font-size: 14px; */
+    color: var(--secondaryColor);
 }
 
 .button-conteiner1 {
@@ -68,22 +81,28 @@ header h2 {
 
 }
 
-.header-btn {
+.header-btn,
+.start-btn {
     background-color: var(--primaryColor);
     color: var(--secondaryColor);
     border: none;
     border-radius: 5px;
-    width: 40%;
-    height: 40px;
+    min-width: 40%;
+    min-height: 40px;
     cursor: pointer;
 }
 
-.header-btn p {
+.header-btn p,
+.start-btn p {
+    cursor: pointer;
     font-size: 18px;
     font-family: 'Baloo Tamma 2', cursive;
     margin: auto;
+    padding: 2px;
     text-align: center;
     line-height: 36px;
+    color: var(--secondaryColor);
+
 }
 
 .help-btn {
@@ -99,8 +118,8 @@ header h2 {
 
 /* START SECTION  */
 .main-container {
-    position: relative;
-    min-height: 100vh;
+    position: absolute;
+    height: 100vh;
     top: 0;
     bottom: 0;
     left: 0;
@@ -108,9 +127,93 @@ header h2 {
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
+    z-index: 2;
+    transform: scale(0);
+    transition: 0.3s ease-in-out;
+}
+
+.main-container.active {
+    transform: scale(1);
+}
+
+.active-alert {
+    position: absolute;
+    width: 40vh;
+    height: 40vh;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: translate(-50%, -50%);
+    background-color: var(--secondaryColor);
+    border: 2px solid var(--primaryColor);
+    border-radius: 10%;
+    text-align: center;
+    z-index: 4;
+}
+
+/* .active-alert p {
+    padding-bottom: 50px;
+} */
+
+
+
+section {
+    position: absolute;
+    background-color: var(--secondaryColor);
+    width: 90vw;
+    min-height: 90vh;
+    top: 5%;
+    left: 5%;
+    bottom: 5%;
+    border-radius: 10px;
+    z-index: 3;
+    transition: 0.3s ease-in-out;
+}
+
+h1,
+h2 {
+    color: var(--primaryColor);
+}
+
+p {
+    color: var(--thirdColor);
 }
 
 .start-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition-delay: 0.15s;
+    transform: scale(0);
+}
+
+.start-section.active {
+    transform: scale(1);
+}
+
+.start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+}
+
+.exit-btn {
+    position: absolute;
+    top: 5px;
+    right: 2%;
+    /* transform: translateY(-50%); */
+
+}
+
+
+.new-proj-section {
     position: absolute;
     background-color: var(--secondaryColor);
     width: 90vw;
@@ -123,10 +226,10 @@ header h2 {
     flex-direction: column;
     align-items: center;
     justify-content: space-around; */
-    z-index: 1;
+    z-index: 3;
 }
 
-.start-container {
+.new-proj-container {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -151,7 +254,7 @@ header h2 {
 }
 
 
-.start-btns {
+.new-proj-btns {
     position: absolute;
     top: 5%;
     right: 2%;
@@ -171,7 +274,7 @@ header h2 {
     position: absolute;
     background-color: var(--secondaryColor);
     width: 90vw;
-    min-height: 200vh;
+    min-height: 90vh;
     top: 100%;
     left: 5%;
     bottom: 5%;
@@ -180,7 +283,7 @@ header h2 {
 
 .exit-room.main-btn {
     position: absolute;
-    top: 5%;
+    top: 5px;
     right: 2%;
     /* transform: translateY(-50%); */
 
@@ -189,8 +292,9 @@ header h2 {
 .help-btn-room {
     position: absolute;
     left: 50%;
-    top: 95%;
-    transform: translate(-50%, -50%);
+    /* top: calc(100% - 10px); */
+    bottom: 50px;
+    transform: translateX(-50%);
 }
 
 .navbar {
@@ -210,9 +314,9 @@ header h2 {
 
 }
 
-.room-navbar li {
+/* .room-navbar li {
     width: ;
-}
+} */
 
 .room-btn {
     cursor: pointer;
