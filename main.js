@@ -60,14 +60,70 @@ const showAlert = () => {
 }
 
 //CREATE NEW PROJECT 
-function createNewProject() {}
+const createProject = (e) => {
+    e.preventDefault()
+
+    console.log('dziala');
+
+    const newProjectSection = document.createElement('section');
+
+    newProjectSection.classList.add('new-proj-section');
+
+    setTimeout(function () {
+        newProjectSection.classList.add('active');
+    }, 10)
+
+    newProjectSection.innerHTML = `<div class="new-proj-container">
+        <div class="new-proj-btns">
+            <button class="exit-project main-btn" id="exit-project"><i class="far fa-times-circle"></i></button>
+            <button class="save-project main-btn" id="save-project"><i class="far fa-save"></i></button>
+        </div>
+        
+        <h2>Nowy Projekt</h2>
+
+        <div class='basic-form-container' id='basic-form-container'>
+        <h3>Dane podstawowe</h3>
+        <form action="" class='basic-form' id="basic-info-form">
+        <label for="name">Nazwa Projektu</label>
+        <input type="text" id='name' placeholder="Nazwa Projektu" required>
+        <label for="localisation">Lokalizacja</label>
+        <input type="text" id='Localisation' placeholder="Lokalizacja">
+        <input class='basic-submit start-btn' id="basic-submit" type="submit" value="Zapisz">
+        </div>
+        <button class="help-btn-section main-btn" id="help-btn-start"><i
+                class="far fa-question-circle"></i></button>
+    </div>`
+
+    mainContainer.appendChild(newProjectSection);
+
+    // close new project section
+    const closeProjBtn = document.getElementById('exit-project');
+
+    closeProjBtn.addEventListener('click', function () {
+
+        newProjectSection.classList.remove('active')
+
+        //Remove project from the Dom
+        setTimeout(function () {
+            mainContainer.removeChild(newProjectSection)
+        }, 1000)
+    })
+
+    // save project 
+    const saveProjBtn = document.getElementById('save-project');
+
+    saveProjBtn.addEventListener('click', function () {
+        showAlert()
+    })
+
+}
 
 
 
 
 // LISTENERS 
 startBtn.addEventListener('click', startProj);
-newProject.addEventListener('click', createNewProject);
+newProject.addEventListener('click', createProject);
 exitBtn.addEventListener('click', closeStartSection);
 regBtn.addEventListener('click', showAlert);
 logInBtn.addEventListener('click', showAlert);
