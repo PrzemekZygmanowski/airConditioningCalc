@@ -36,21 +36,31 @@ const showAlert = () => {
 
     mainContainer.appendChild(alertEl)
 
-    // const closeAlertBtn = document.getElementById('exit-alert-btn')
 
-    // const removeAlert = () => {
-    //     mainContainer.removeChild(alertEl)
-    // }
+    // close alert - delete alert from DOM
+    const closeAlertBtn = document.getElementById('close-alert');
+
+    closeAlertBtn.addEventListener('click', function () {
+        mainContainer.removeChild(alertEl);
+    })
 
 
-    // closeAlertBtn.onclick = removeAlert()
-
+    // // LISTENERS TO DYNAMIC ELEMENTS 
+    // alertEl.addEventListener('click', function (e) {
+    //     if (e.target.classList.contains('.exit-alert-btn')) {
+    //         console.log('dziala');
+    //         // mainContainer.removeChild(alertEl)
+    //     }
+    // })
 
     setTimeout(function () {
         mainContainer.removeChild(alertEl)
     }, 3000)
 
 }
+
+//CREATE NEW PROJECT 
+function createNewProject() {}
 
 
 
@@ -60,4 +70,12 @@ startBtn.addEventListener('click', startProj);
 newProject.addEventListener('click', createNewProject);
 exitBtn.addEventListener('click', closeStartSection);
 regBtn.addEventListener('click', showAlert);
-logInBtn.addEventListener('click', showAlert)
+logInBtn.addEventListener('click', showAlert);
+
+// LISTENERS TO DYNAMIC ELEMENTS 
+// mainContainer.addEventListener('click', function (e) {
+//     if (e.target.classList.contains('.active-alert')) {
+//         console.log('dziala');
+//         // mainContainer.removeChild(alertEl)
+//     }
+// })
