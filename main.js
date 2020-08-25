@@ -79,6 +79,12 @@ const showAlert = () => {
 
 }
 
+
+const localStorageRooms = JSON.parse(localStorage.getItem("rooms"))
+
+let rooms = localStorage.getItem("rooms") !== null ? localStorageRooms : [];
+
+
 //CREATE NEW PROJECT 
 const createProject = (e) => {
     e.preventDefault()
@@ -137,11 +143,12 @@ const createProject = (e) => {
         <li class="room-Li" id='room-Li'><span>02.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
         <li class="room-Li" id='room-Li'><span>03.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
         </ul>
+
         </div>
         <button class="help-btn-section main-btn" id="help-btn-start"><i
-                class="far fa-question-circle"></i></button>
-
-                </div>            
+                class="far fa-question-circle"></i></button>      
+        </div>     
+                 
     </div>`
 
     mainContainer.appendChild(newProjectSection);
@@ -166,7 +173,53 @@ const createProject = (e) => {
         showAlert()
     })
 
+    // add new room
+
+
+    const addRoomBtn = document.getElementById('add-room-btn');
+
+    addRoomBtn.addEventListener('click', addNewRoom)
+
 }
+
+
+
+// Add new room function
+const addNewRoom = (e) => {
+    e.preventDefault();
+
+    const addRoomForm = document.getElementById('add-room-form'),
+        roomName = document.getElementById('room-name'),
+        roomArea = document.getElementById('room-area'),
+        innerTemp = document.getElementById('inner-temp');
+    let id = 1
+
+    if (roomName.value.trim() === '' || roomArea.value.trim() === '') {
+        alert("Przepraszam, nazwai powierzchnia pomieszczenia są wymagane :)")
+    } else {
+        const room = {
+            id: generateID()
+            name: roomName.value,
+            area: +roomArea.value
+        }
+        rooms.push(room);
+        // addRoomDOM(room)
+        // updateValues()
+
+        // updateLocalStorage()
+
+        roomName.value = "";
+        roomArea.value = "";
+    }
+    console.log('dodaj pokoj');
+
+
+
+}
+
+
+
+
 
 
 
