@@ -198,7 +198,7 @@ const addNewRoom = (e) => {
         alert("Przepraszam, nazwai powierzchnia pomieszczenia są wymagane :)")
     } else {
         const room = {
-            id: generateID()
+            id: generateID(),
             name: roomName.value,
             area: +roomArea.value
         }
