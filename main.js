@@ -5,7 +5,9 @@ const newProject = document.getElementById('newproj-btn'),
     startSection = document.getElementById('start-section'),
     exitBtn = document.getElementById('exit-btn'),
     logInBtn = document.getElementById('login-btn'),
-    regBtn = document.getElementById('registration-btn');
+    regBtn = document.getElementById('registration-btn'),
+    helpBtn = document.getElementsByClassName('help-btn');
+
 
 
 // Start Project function 
@@ -24,6 +26,24 @@ const closeStartSection = () => {
 // Create new Project function
 const createNewProject = () => {
     console.log('done');
+}
+
+// show help function
+const showHelp = () => {
+    const helpEl = document.createElement('div');
+
+    helpEl.classList.add('help-element');
+
+    helpEl.innerHTML = `<h2>Pomoc</h2><p>Tutaj będzie pojawiała się pomoc dotycząca aplikacji i zagadnień merytorycznych <i class="far fa-smile-wink"></i></p><button class='exit-help-btn main-btn'id='close-help'><i class="far fa-times-circle"></i></button>`
+
+    mainContainer.appendChild(helpEl);
+
+    // close alert - delete alert from DOM
+    const closeHelpBtn = document.getElementById('close-help');
+
+    closeHelpBtn.addEventListener('click', function () {
+        body.removeChild(helpEl);
+    })
 }
 
 // Show Alert function
@@ -78,7 +98,7 @@ const createProject = (e) => {
             <button class="exit-project main-btn" id="exit-project"><i class="far fa-times-circle"></i></button>
             <button class="save-project main-btn" id="save-project"><i class="far fa-save"></i></button>
         </div>
-        
+        <div class='new-proj-wrapper'>
         <h2>Nowy Projekt</h2>
 
         <div class='basic-form-container' id='basic-form-container'>
@@ -90,8 +110,38 @@ const createProject = (e) => {
         <input type="text" id='Localisation' placeholder="Lokalizacja">
         <input class='basic-submit start-btn' id="basic-submit" type="submit" value="Zapisz">
         </div>
+
+        <div class="add-room">
+        <h3>Dodaj pomieszczenie</h3>
+        <form id="add-room-form">
+        <div class="form-control">
+            <label for="text">Nazwa pomieszczenia</label>
+            <input type=" text" id="room-name" placeholder="Nazwa pomieszczenia...">
+        </div>
+        <div class="form-control">
+            <label for="number">Powierzchnia</label>
+            <input type="number" id="room-area" placeholder="Powierzchnia...">
+        </div>
+        <div class="form-control">
+        <label for="number">Temperatura wew.</label>
+        <input type="range" min='12' max='32' value='20' id="inner-temp">
+    </div>
+    <input class='add-room-btn start-btn' id="add-room-btn" type="submit" value="Dodaj">
+    </form>
+        </div>
+        
+        <div class="rooms-container">
+        <h3>Pomieszczenia</h3>
+        <ul id="room-list" class="room-list">
+        <li class="room-Li" id='room-Li'><span>01.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
+        <li class="room-Li" id='room-Li'><span>02.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
+        <li class="room-Li" id='room-Li'><span>03.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
+        </ul>
+        </div>
         <button class="help-btn-section main-btn" id="help-btn-start"><i
                 class="far fa-question-circle"></i></button>
+
+                </div>            
     </div>`
 
     mainContainer.appendChild(newProjectSection);
@@ -127,11 +177,15 @@ newProject.addEventListener('click', createProject);
 exitBtn.addEventListener('click', closeStartSection);
 regBtn.addEventListener('click', showAlert);
 logInBtn.addEventListener('click', showAlert);
+// helpBtn.addEventListener('click', function () {
+//     console.log('dziala');
+// });
 
 // LISTENERS TO DYNAMIC ELEMENTS 
-// mainContainer.addEventListener('click', function (e) {
-//     if (e.target.classList.contains('.active-alert')) {
+// document.addEventListener('click', function (e) {
+//     if (e.target.classList.contains('.help-btn')) {
 //         console.log('dziala');
+//         showHelp()
 //         // mainContainer.removeChild(alertEl)
 //     }
 // })

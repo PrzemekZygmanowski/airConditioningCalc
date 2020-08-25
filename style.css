@@ -154,6 +154,25 @@ header * {
     z-index: 4;
 }
 
+.help-element {
+    position: absolute;
+    width: 80vh;
+    min-height: 80vh;
+    overflow-y: scroll;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    background-color: var(--secondaryColor);
+    border: 2px solid var(--primaryColor);
+    border-radius: 10%;
+    text-align: center;
+    z-index: 4;
+}
+
 /* .active-alert p {
     padding-bottom: 50px;
 } */
@@ -177,6 +196,7 @@ h1,
 h2,
 h3 {
     color: var(--primaryColor);
+    text-align: center;
 }
 
 p {
@@ -248,7 +268,10 @@ p {
     overflow-y: scroll;
 }
 
-
+.new-proj-wrapper {
+    height: 80%;
+    width: 100%;
+}
 
 .basic-form-container {
     display: flex;
@@ -278,7 +301,8 @@ input {
     border-radius: 2px;
 }
 
-.basic-submit {
+.basic-submit,
+.add-room-btn {
     background-color: var(--primaryColor);
     color: var(--secondaryColor);
     border: none;
@@ -310,12 +334,64 @@ input {
 }
 
 .help-btn-section {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 95%;
     transform: translate(-50%, -50%);
 }
 
+.add-room-form {
+    width: 80%;
+    background-color: var(--secondaryColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.room-container {
+    width: 80%;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.room-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--secondaryColor);
+    width: 100%;
+}
+
+.room-Li {
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+    width: 80%;
+    border-radius: 25px;
+    font-size: 18px;
+    height: 32px;
+    line-height: 32px;
+    margin: 3px;
+}
+
+.room-Li span {
+    padding-left: 10px;
+}
+
+.edit-room-btn,
+.delete-room-btn {
+
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+    border: none;
+    font-size: 18px;
+}
 
 /* ROOM SECTION  */
 .room-section {
