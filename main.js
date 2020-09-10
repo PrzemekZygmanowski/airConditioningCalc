@@ -139,9 +139,6 @@ const createProject = (e) => {
         <div class="rooms-container">
         <h3>Pomieszczenia</h3>
         <ul id="room-list" class="room-list">
-        <li class="room-Li" id='room-Li'><span>01.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
-        <li class="room-Li" id='room-Li'><span>02.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
-        <li class="room-Li" id='room-Li'><span>03.</span><span>nazwa</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button></li>
         </ul>
 
         </div>
@@ -175,7 +172,6 @@ const createProject = (e) => {
 
     // add new room
 
-
     const addRoomBtn = document.getElementById('add-room-btn');
 
     addRoomBtn.addEventListener('click', addNewRoom)
@@ -205,6 +201,7 @@ const addNewRoom = (e) => {
         }
         rooms.push(room);
         addRoomToDOM(room)
+        addRoomSectionToDOM(room);
         // updateValues()
 
         // updateLocalStorage()
@@ -227,19 +224,41 @@ const addRoomToDOM = (room) => {
 
     const item = document.createElement('li');
 
+    // add class and id to item 
     item.classList.add('room-Li');
     item.id = 'room-Li'
 
-    item.innerHTML = `<span>${romm.id}</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`
+    item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`
 
-    roomlist.appendChild(item)
+    roomlist.appendChild(item);
+
 }
 
+// ADD ROOM AECTION TO DOM 
+const addRoomSectionToDOM = (room) => {
+    console.log("dodaje sekcje pomieszczenia");
 
+    const roomSection = document.createElement('section');
 
+    // add class and id to room section
+    roomSection.classList.add('room-section', `room-${room.id}`);
+    roomSection.id = 'room-section';
 
+    roomSection.innerHTML = `<button class="exit-room main-btn" id="exit-room"><i class="far fa-times-circle"></i></button>
+    <button class="help-btn-room main-btn" id="help-btn-room"><i class="far fa-question-circle"></i></button>
+    <div class="navbar">
+        <ul class="room-navbar">
+            <li><button class="room-btn" id="home-btn"><i class="fas fa-home"></i></button></li>
+            <li><button class="room-btn" id="human-btn"><i class="far fa-smile"></i></button></li>
+            <li><button class="room-btn" id="light-btn"><i class="far fa-lightbulb"></i></button></li>
+            <li><button class="room-btn" id="machine-btn"><i class="fas fa-laptop"></i></button></li>
+            <li><button class="room-btn" id="window-btn"><i class="fas fa-cloud-sun"></i></button></li>
+            <li><button class="room-btn" id="wall-btn"><i class="fas fa-door-closed"></i></button></li>
+        </ul>
+    </div>`
 
-
+    mainContainer.appendChild(roomSection);
+}
 
 // LISTENERS 
 startBtn.addEventListener('click', startProj);
