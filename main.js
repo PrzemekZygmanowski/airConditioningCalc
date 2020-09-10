@@ -200,23 +200,40 @@ const addNewRoom = (e) => {
         const room = {
             id: generateID(),
             name: roomName.value,
-            area: +roomArea.value
+            area: +roomArea.value,
+            iTemp: +innerTemp.value
         }
         rooms.push(room);
-        // addRoomDOM(room)
+        addRoomToDOM(room)
         // updateValues()
 
         // updateLocalStorage()
 
         roomName.value = "";
         roomArea.value = "";
+        innerTemp.value = ""
     }
     console.log('dodaj pokoj');
-
-
-
+}
+// Generaterandom Id 
+function generateID() {
+    return Math.floor(Math.random() * 10)
 }
 
+// add room to DOM list 
+const addRoomToDOM = (room) => {
+
+    const roomlist = document.getElementById('room-list')
+
+    const item = document.createElement('li');
+
+    item.classList.add('room-Li');
+    item.id = 'room-Li'
+
+    item.innerHTML = `<span>${romm.id}</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`
+
+    roomlist.appendChild(item)
+}
 
 
 
