@@ -1,105 +1,98 @@
-// UI Variables 
+// UI Variables
 const newProject = document.getElementById('newproj-btn'),
-    startBtn = document.getElementById('start-btn'),
-    mainContainer = document.getElementById('main-container'),
-    startSection = document.getElementById('start-section'),
-    exitBtn = document.getElementById('exit-btn'),
-    logInBtn = document.getElementById('login-btn'),
-    regBtn = document.getElementById('registration-btn'),
-    helpBtn = document.getElementsByClassName('help-btn');
+  startBtn = document.getElementById('start-btn'),
+  mainContainer = document.getElementById('main-container'),
+  startSection = document.getElementById('start-section'),
+  exitBtn = document.getElementById('exit-btn'),
+  logInBtn = document.getElementById('login-btn'),
+  regBtn = document.getElementById('registration-btn'),
+  helpBtn = document.getElementsByClassName('help-btn');
 
-
-
-// Start Project function 
+// Start Project function
 const startProj = () => {
-    mainContainer.classList.add('active');
-    startSection.classList.add('active')
-}
+  mainContainer.classList.add('active');
+  startSection.classList.add('active');
+};
 
-// Close Start Section Function 
+// Close Start Section Function
 
 const closeStartSection = () => {
-    mainContainer.classList.remove('active');
-    startSection.classList.remove('active')
-}
+  mainContainer.classList.remove('active');
+  startSection.classList.remove('active');
+};
 
 // Create new Project function
 const createNewProject = () => {
-    console.log('done');
-}
+  console.log('done');
+};
 
 // show help function
 const showHelp = () => {
-    const helpEl = document.createElement('div');
+  const helpEl = document.createElement('div');
 
-    helpEl.classList.add('help-element');
+  helpEl.classList.add('help-element');
 
-    helpEl.innerHTML = `<h2>Pomoc</h2><p>Tutaj będzie pojawiała się pomoc dotycząca aplikacji i zagadnień merytorycznych <i class="far fa-smile-wink"></i></p><button class='exit-help-btn main-btn'id='close-help'><i class="far fa-times-circle"></i></button>`
+  helpEl.innerHTML = `<h2>Pomoc</h2><p>Tutaj będzie pojawiała się pomoc dotycząca aplikacji i zagadnień merytorycznych <i class="far fa-smile-wink"></i></p><button class='exit-help-btn main-btn'id='close-help'><i class="far fa-times-circle"></i></button>`;
 
-    mainContainer.appendChild(helpEl);
+  mainContainer.appendChild(helpEl);
 
-    // close alert - delete alert from DOM
-    const closeHelpBtn = document.getElementById('close-help');
+  // close alert - delete alert from DOM
+  const closeHelpBtn = document.getElementById('close-help');
 
-    closeHelpBtn.addEventListener('click', function () {
-        body.removeChild(helpEl);
-    })
-}
+  closeHelpBtn.addEventListener('click', function () {
+    body.removeChild(helpEl);
+  });
+};
 
 // Show Alert function
 const showAlert = () => {
-    const alertEl = document.createElement('div');
+  const alertEl = document.createElement('div');
 
-    alertEl.classList.add('active-alert')
+  alertEl.classList.add('active-alert');
 
-    alertEl.innerHTML = `<h2>Upss...</h2><p>element w budowie, cały czas nad tym pracuje <i class="far fa-smile-wink"></i></p><button class='exit-alert-btn main-btn'id='close-alert'><i class="far fa-times-circle"></i></button>`
+  alertEl.innerHTML = `<h2>Upss...</h2><p>element w budowie, cały czas nad tym pracuje <i class="far fa-smile-wink"></i></p><button class='exit-alert-btn main-btn'id='close-alert'><i class="far fa-times-circle"></i></button>`;
 
-    mainContainer.appendChild(alertEl)
+  mainContainer.appendChild(alertEl);
 
+  // close alert - delete alert from DOM
+  const closeAlertBtn = document.getElementById('close-alert');
 
-    // close alert - delete alert from DOM
-    const closeAlertBtn = document.getElementById('close-alert');
+  closeAlertBtn.addEventListener('click', function () {
+    mainContainer.removeChild(alertEl);
+  });
 
-    closeAlertBtn.addEventListener('click', function () {
-        mainContainer.removeChild(alertEl);
-    })
+  // // LISTENERS TO DYNAMIC ELEMENTS
+  // alertEl.addEventListener('click', function (e) {
+  //     if (e.target.classList.contains('.exit-alert-btn')) {
+  //         console.log('dziala');
+  //         // mainContainer.removeChild(alertEl)
+  //     }
+  // })
 
+  setTimeout(function () {
+    mainContainer.removeChild(alertEl);
+  }, 3000);
+};
 
-    // // LISTENERS TO DYNAMIC ELEMENTS 
-    // alertEl.addEventListener('click', function (e) {
-    //     if (e.target.classList.contains('.exit-alert-btn')) {
-    //         console.log('dziala');
-    //         // mainContainer.removeChild(alertEl)
-    //     }
-    // })
+const localStorageRooms = JSON.parse(localStorage.getItem('rooms'));
 
-    setTimeout(function () {
-        mainContainer.removeChild(alertEl)
-    }, 3000)
+let rooms = localStorage.getItem('rooms') !== null ? localStorageRooms : [];
 
-}
-
-
-const localStorageRooms = JSON.parse(localStorage.getItem("rooms"))
-
-let rooms = localStorage.getItem("rooms") !== null ? localStorageRooms : [];
-
-
-//CREATE NEW PROJECT 
+//CREATE NEW PROJECT
 const createProject = (e) => {
-    e.preventDefault()
+  e.preventDefault();
 
-    console.log('dziala');
+  console.log('dziala');
 
-    const newProjectSection = document.createElement('section');
+  const newProjectSection = document.createElement('section');
 
-    newProjectSection.classList.add('new-proj-section');
+  newProjectSection.classList.add('new-proj-section');
 
-    setTimeout(function () {
-        newProjectSection.classList.add('active');
-    }, 10)
+  setTimeout(function () {
+    newProjectSection.classList.add('active');
+  }, 10);
 
-    newProjectSection.innerHTML = `<div class="new-proj-container">
+  newProjectSection.innerHTML = `<div class="new-proj-container">
         <div class="new-proj-btns">
             <button class="exit-project main-btn" id="exit-project"><i class="far fa-times-circle"></i></button>
             <button class="save-project main-btn" id="save-project"><i class="far fa-save"></i></button>
@@ -146,121 +139,181 @@ const createProject = (e) => {
                 class="far fa-question-circle"></i></button>      
         </div>     
                  
-    </div>`
+    </div>`;
 
-    mainContainer.appendChild(newProjectSection);
+  mainContainer.appendChild(newProjectSection);
 
-    // close new project section
-    const closeProjBtn = document.getElementById('exit-project');
+  // close new project section
+  const closeProjBtn = document.getElementById('exit-project');
 
-    closeProjBtn.addEventListener('click', function () {
+  closeProjBtn.addEventListener('click', function () {
+    newProjectSection.classList.remove('active');
 
-        newProjectSection.classList.remove('active')
+    //Remove project from the Dom
+    setTimeout(function () {
+      mainContainer.removeChild(newProjectSection);
+    }, 1000);
+  });
 
-        //Remove project from the Dom
-        setTimeout(function () {
-            mainContainer.removeChild(newProjectSection)
-        }, 1000)
-    })
+  // save project
+  const saveProjBtn = document.getElementById('save-project');
 
-    // save project 
-    const saveProjBtn = document.getElementById('save-project');
+  saveProjBtn.addEventListener('click', function () {
+    showAlert();
+  });
 
-    saveProjBtn.addEventListener('click', function () {
-        showAlert()
-    })
+  // add new room
 
-    // add new room
+  const addRoomBtn = document.getElementById('add-room-btn');
 
-    const addRoomBtn = document.getElementById('add-room-btn');
-
-    addRoomBtn.addEventListener('click', addNewRoom)
-
-}
-
-
+  addRoomBtn.addEventListener('click', addNewRoom);
+};
 
 // Add new room function
 const addNewRoom = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const addRoomForm = document.getElementById('add-room-form'),
-        roomName = document.getElementById('room-name'),
-        roomArea = document.getElementById('room-area'),
-        innerTemp = document.getElementById('inner-temp');
-    let id = 1
+  const addRoomForm = document.getElementById('add-room-form'),
+    roomName = document.getElementById('room-name'),
+    roomArea = document.getElementById('room-area'),
+    innerTemp = document.getElementById('inner-temp');
+  let id = 1;
 
-    if (roomName.value.trim() === '' || roomArea.value.trim() === '') {
-        alert("Przepraszam, nazwai powierzchnia pomieszczenia są wymagane :)")
-    } else {
-        const room = {
-            id: generateID(),
-            name: roomName.value,
-            area: +roomArea.value,
-            iTemp: +innerTemp.value
-        }
-        rooms.push(room);
-        addRoomToDOM(room)
-        addRoomSectionToDOM(room);
-        // updateValues()
+  if (roomName.value.trim() === '' || roomArea.value.trim() === '') {
+    alert('Przepraszam, nazwai powierzchnia pomieszczenia są wymagane :)');
+  } else {
+    const room = {
+      id: generateID(),
+      name: roomName.value,
+      area: +roomArea.value,
+      iTemp: +innerTemp.value,
+    };
+    rooms.push(room);
+    addRoomToDOM(room);
+    addRoomSectionToDOM(room);
+    // updateValues()
 
-        // updateLocalStorage()
+    // updateLocalStorage()
 
-        roomName.value = "";
-        roomArea.value = "";
-        innerTemp.value = ""
-    }
-    console.log('dodaj pokoj');
-}
-// Generaterandom Id 
+    roomName.value = '';
+    roomArea.value = '';
+    innerTemp.value = '';
+  }
+  console.log('dodaj pokoj');
+};
+// Generaterandom Id
 function generateID() {
-    return Math.floor(Math.random() * 10)
+  return Math.floor(Math.random() * 10);
 }
 
-// add room to DOM list 
+// add room to DOM list
 const addRoomToDOM = (room) => {
+  const roomlist = document.getElementById('room-list');
 
-    const roomlist = document.getElementById('room-list')
+  const item = document.createElement('li');
 
-    const item = document.createElement('li');
+  // add class and id to item
+  item.classList.add('room-Li');
+  item.id = 'room-Li';
 
-    // add class and id to item 
-    item.classList.add('room-Li');
-    item.id = 'room-Li'
+  item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`;
 
-    item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`
+  roomlist.appendChild(item);
+};
 
-    roomlist.appendChild(item);
-
-}
-
-// ADD ROOM AECTION TO DOM 
+// ADD ROOM AECTION TO DOM
 const addRoomSectionToDOM = (room) => {
-    console.log("dodaje sekcje pomieszczenia");
+  console.log('dodaje sekcje pomieszczenia');
 
-    const roomSection = document.createElement('section');
+  const roomSection = document.createElement('section');
 
-    // add class and id to room section
-    roomSection.classList.add('room-section', `room-${room.id}`);
-    roomSection.id = 'room-section';
+  // add class and id to room section
+  roomSection.classList.add('room-section', `room-${room.id}`);
+  roomSection.id = 'room-section';
 
-    roomSection.innerHTML = `<button class="exit-room main-btn" id="exit-room"><i class="far fa-times-circle"></i></button>
+  roomSection.innerHTML = `<button class="exit-room main-btn" id="exit-room"><i class="far fa-times-circle"></i></button>
     <button class="help-btn-room main-btn" id="help-btn-room"><i class="far fa-question-circle"></i></button>
+<div><h2>${room.name}</h2></div>
+<div class='room-overlap home-overlap active' id='home'>
+<div class='main-data'>
+<h3>Dane podstawowe</h3>
+<h4>Całkowite zyski ciepła: 00 kW</h4>
+<p>Powierzchnia: <strong>${room.area} m kwd.</strong></p>
+<p>Temperatura wewnętrzna: <strong>${room.iTemp} st. C</strong></p>
+<p>Zyski ciepła od ludzi: <strong>Q=00 kW</strong></p>
+<p>Zyski ciepła od oświetlenia: <strong>Q=00 kW</strong></p>
+<p>Zyski ciepła od urządzeń: <strong>Q=00 kW</strong></p>
+<p>Zyski ciepła od przegród przezroczystych: <strong>Q=00 kW</strong></p>
+<p>Zyski ciepła od przegród nieprzezroczystych: <strong>Q=00 kW</strong></p>
+</div>
+</div>
+<div class='room-overlap human-overlap' id='human'>
+<h3>Zyski ciepła od ludzi</h3>
+</div>
+<div class='room-overlap light-overlap' id='light'><h3>Zyski ciepła od oświetlenia</h3></div>
+<div class='room-overlap machine-overlap' id='machine'><h3>Zyski ciepła od urządzeń</h3></div>
+<div class='room-overlap window-overlap' id='window'><h3>Zyski ciepła przez przegrody przezroczyste</h3></div>
+<div class='room-overlap wall-overlap' id='wall'><h3>Zyski ciepła przez przegrody nieprzezroczyste</h3></div>
     <div class="navbar">
         <ul class="room-navbar">
-            <li><button class="room-btn" id="home-btn"><i class="fas fa-home"></i></button></li>
-            <li><button class="room-btn" id="human-btn"><i class="far fa-smile"></i></button></li>
-            <li><button class="room-btn" id="light-btn"><i class="far fa-lightbulb"></i></button></li>
-            <li><button class="room-btn" id="machine-btn"><i class="fas fa-laptop"></i></button></li>
-            <li><button class="room-btn" id="window-btn"><i class="fas fa-cloud-sun"></i></button></li>
-            <li><button class="room-btn" id="wall-btn"><i class="fas fa-door-closed"></i></button></li>
+            <li><button class="room-btn" id="home-btn" data-tab='home'><i class="fas fa-home"></i></button></li>
+            <li><button class="room-btn" id="human-btn" data-tab='human'><i class="far fa-smile"></i></button></li>
+            <li><button class="room-btn" id="light-btn" data-tab='light'><i class="far fa-lightbulb"></i></button></li>
+            <li><button class="room-btn" id="machine-btn" data-tab='machine'><i class="fas fa-laptop"></i></button></li>
+            <li><button class="room-btn" id="window-btn" data-tab='window'><i class="fas fa-cloud-sun"></i></button></li>
+            <li><button class="room-btn" id="wall-btn" data-tab='wall'><i class="fas fa-door-closed"></i></button></li>
         </ul>
-    </div>`
+    </div>`;
 
-    mainContainer.appendChild(roomSection);
+  mainContainer.appendChild(roomSection);
+
+  //Switch overlap
+  switchOverlap();
+};
+
+//SWITCH OVERLAP FUNCTION
+function switchOverlap() {
+  //variables
+  // const homeBtn = document.getElementById('home-btn'),
+  //       humanBtn = document.getElementById('human-btn'),
+  //       lightBtn = document.getElementById('light-btn'),
+  //       machineBtn = document.getElementById('machine-btn'),
+  //       windowBtn = document.getElementById('window-btn'),
+  //       wallBtn = document.getElementById('wall-btn'),
+  //       homeOverlap = document.getElementById('home-overlap'),
+  //       humanOverlap = document.getElementById('human-overlap'),
+  //       lightOverlap = document.getElementById('light-overlap'),
+  //       machineOverlap = document.getElementById('machine-overlap'),
+  //       windowOverlap = document.getElementById('window-overlap'),
+  //       wallOverlap = document.getElementById('wall-overlap');
+  const roomOverlap = document.querySelectorAll('.room-overlap'),
+    roomBtn = document.querySelectorAll('.room-btn');
+
+  roomBtn.forEach(function (el) {
+    el.addEventListener('click', openTab);
+  });
+
+  function openTab(el) {
+    const btnTarget = el.currentTarget,
+      overlap = btnTarget.dataset.tab;
+
+    console.log(el.currentTarget);
+
+    roomOverlap.forEach(function (el) {
+      el.classList.remove('active');
+    });
+
+    roomBtn.forEach(function (el) {
+      el.classList.remove('active');
+    });
+
+    document.querySelector('#' + overlap).classList.add('active');
+
+    btnTarget.classList.add('active');
+  }
 }
 
-// LISTENERS 
+// LISTENERS
 startBtn.addEventListener('click', startProj);
 newProject.addEventListener('click', createProject);
 exitBtn.addEventListener('click', closeStartSection);
@@ -270,7 +323,7 @@ logInBtn.addEventListener('click', showAlert);
 //     console.log('dziala');
 // });
 
-// LISTENERS TO DYNAMIC ELEMENTS 
+// LISTENERS TO DYNAMIC ELEMENTS
 // document.addEventListener('click', function (e) {
 //     if (e.target.classList.contains('.help-btn')) {
 //         console.log('dziala');
