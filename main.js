@@ -216,22 +216,22 @@ const addRoomToDOM = (room) => {
   item.classList.add('room-Li');
   item.id = 'room-Li';
 
-  item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn"><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`;
+  item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn" id='edit-room-btn'><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`;
 
   roomlist.appendChild(item);
 };
 
 // ADD ROOM AECTION TO DOM
 const addRoomSectionToDOM = (room) => {
-  console.log('dodaje sekcje pomieszczenia');
+  console.log(room.id);
 
   const roomSection = document.createElement('section');
 
   // add class and id to room section
-  roomSection.classList.add('room-section', `room-${room.id}`);
-  roomSection.id = 'room-section';
+  roomSection.classList.add('room-section', `room-${room.id}`, 'hide');
+  roomSection.id = `${room.name}-room`;
 
-  roomSection.innerHTML = `<button class="exit-room main-btn" id="exit-room"><i class="far fa-times-circle"></i></button>
+  roomSection.innerHTML = `<button class="exit-room main-btn" id="exit-room" ><i class="far fa-times-circle"></i></button>
     <button class="help-btn-room main-btn" id="help-btn-room"><i class="far fa-question-circle"></i></button>
 <div><h2>${room.name}</h2></div>
 <div class='room-overlap home-overlap active' id='home'>
@@ -266,6 +266,44 @@ const addRoomSectionToDOM = (room) => {
     </div>`;
 
   mainContainer.appendChild(roomSection);
+
+  // edit room section
+  //   document.addEventListener('click', function (e) {
+  //     if (e.target.classList.contains('.edit-room-btn')) {
+  //       console.log('dziala');
+  //     }
+  //   });
+
+  //   document
+  //     .querySelector('#' + `${room.name}` + '-room')
+  //     .classList.remove('hide');
+
+  const editRoomBtn = document.querySelectorAll('.edit-room-btn');
+
+  editRoomBtn.forEach(function (el) {
+    const editRoom = () => {
+      console.log('2423');
+      roomSection.classList.remove('hide');
+    };
+
+    el.addEventListener('click', editRoom);
+  });
+
+  //   editRoomBtn.addEventListener('click', function (id) {
+  //     roomSection.classList.remove('hide');
+  //   });
+
+  // close room section
+
+  //   const exitRoom = (id) => {
+  //     roomSection.classList.add('hide');
+  //   };
+
+  const exitRoomBtn = document.getElementById('exit-room');
+
+  exitRoomBtn.addEventListener('click', function (id) {
+    roomSection.classList.add('hide');
+  });
 
   //Switch overlap
   switchOverlap();
@@ -323,11 +361,11 @@ logInBtn.addEventListener('click', showAlert);
 //     console.log('dziala');
 // });
 
-// LISTENERS TO DYNAMIC ELEMENTS
+//LISTENERS TO DYNAMIC ELEMENTS
 // document.addEventListener('click', function (e) {
-//     if (e.target.classList.contains('.help-btn')) {
-//         console.log('dziala');
-//         showHelp()
-//         // mainContainer.removeChild(alertEl)
-//     }
-// })
+//   if (e.target.classList.contains('.help-btn')) {
+//     console.log('dziala');
+//     showHelp();
+//     // mainContainer.removeChild(alertEl)
+//   }
+// });
