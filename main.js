@@ -289,20 +289,15 @@ const addRoomSectionToDOM = (room) => {
     el.addEventListener('click', editRoom);
   });
 
-  //   editRoomBtn.addEventListener('click', function (id) {
-  //     roomSection.classList.remove('hide');
-  //   });
+  const exitRoomBtn = document.querySelectorAll('.exit-room');
 
-  // close room section
+  exitRoomBtn.forEach(function (el) {
+    const exitRoom = () => {
+      console.log('2423');
+      roomSection.classList.add('hide');
+    };
 
-  //   const exitRoom = (id) => {
-  //     roomSection.classList.add('hide');
-  //   };
-
-  const exitRoomBtn = document.getElementById('exit-room');
-
-  exitRoomBtn.addEventListener('click', function (id) {
-    roomSection.classList.add('hide');
+    el.addEventListener('click', exitRoom);
   });
 
   //Switch overlap
