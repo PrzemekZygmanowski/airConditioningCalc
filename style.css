@@ -88,6 +88,7 @@ header * {
   min-width: 40%;
   min-height: 40px;
   cursor: pointer;
+  margin: 10px auto;
 }
 
 .header-btn p,
@@ -461,10 +462,26 @@ input {
 .room-overlap {
   position: absolute;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 5%;
   height: 70%;
+  width: 90%;
   z-index: 6;
   opacity: 0;
   transition: var(--transition);
+}
+
+.room-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-control {
+  margin: 5px auto;
 }
 
 .room-btn {
@@ -476,4 +493,5 @@ input {
 
 .room-overlap.active {
   opacity: 1;
+  z-index: 7;
 }

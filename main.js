@@ -249,6 +249,44 @@ const addRoomSectionToDOM = (room) => {
 </div>
 <div class='room-overlap human-overlap' id='human'>
 <h3>Zyski ciepła od ludzi</h3>
+<p>Zyski ciepła jawnego: <strong>Q=00 kW</strong></p>
+<p>Zyski ciepła utajonego: <strong>Q=00 kW</strong></p>
+<p>Zyski ciepła od ludzi: <strong>Q=00 kW</strong></p>
+<form id="human-form" class='room-form'>
+    <div class="form-control">
+        <label for="number">Ilość ludzi</label>
+        <input type="range" min='0' max='100' value='50' id="people-number">
+    </div>
+    <div class="form-control">
+        <label for="text">Kim są Ci ludzie?</label>
+          <select type=" text" id="people-sex">
+            <option value="1"> Mężczyźni </option>
+            <option value="2"> Kobiety </option>
+            <option value="3"> Mężczyźni i Kobiety </option>
+            <option value="4"> Dzieci </option>
+          </select>
+    </div>
+    <div class="form-control">
+        <label for="text">Współczynnik jednoczesności</label>
+          <select type=" text" id="people-ratio">
+            <option value="1"> Biura i duże sale </option>
+            <option value="2"> Hotele, pokoje wieloosoowe </option>
+            <option value="3"> Domy towarowe</option>
+            <option value="4"> Pomieszczenia techniczne </option>
+            <option value="5"> Teatry, kina </option>
+          </select>
+        </div>
+    <div class="form-control">
+        <label for="text">Aktywność</label>
+          <select type=" text" id="people-activity">
+            <option value="1"> Mała </option>
+            <option value="2"> Średnia </option>
+            <option value="3"> Duża </option>
+          </select>
+    </div>
+    <input class='start-btn' id="submit-human-btn" type="submit" value="Oblicz">
+    </form>
+
 </div>
 <div class='room-overlap light-overlap' id='light'><h3>Zyski ciepła od oświetlenia</h3></div>
 <div class='room-overlap machine-overlap' id='machine'><h3>Zyski ciepła od urządzeń</h3></div>
@@ -278,8 +316,21 @@ const addRoomSectionToDOM = (room) => {
   //     .querySelector('#' + `${room.name}` + '-room')
   //     .classList.remove('hide');
 
+  //Switch overlap
+  switchOverlap();
+  // Edit & exit room
+  editRoom();
+  exitRoom();
+};
+
+//EDIT & EXIT ROOM
+function editRoom() {
   const editRoomBtn = document.querySelectorAll('.edit-room-btn');
 
+  editRoomBtn.forEach(function (el) {
+    el.addEventListener('click', editRoomfunc);
+  });
+  function editRoomfunc(el) {}
   editRoomBtn.forEach(function (el) {
     const editRoom = () => {
       console.log('2423');
@@ -288,7 +339,9 @@ const addRoomSectionToDOM = (room) => {
 
     el.addEventListener('click', editRoom);
   });
+}
 
+function exitRoom() {
   const exitRoomBtn = document.querySelectorAll('.exit-room');
 
   exitRoomBtn.forEach(function (el) {
@@ -299,11 +352,7 @@ const addRoomSectionToDOM = (room) => {
 
     el.addEventListener('click', exitRoom);
   });
-
-  //Switch overlap
-  switchOverlap();
-};
-
+}
 //SWITCH OVERLAP FUNCTION
 function switchOverlap() {
   //variables
