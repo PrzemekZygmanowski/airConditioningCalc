@@ -1,3 +1,5 @@
+//NAZWA POMIESZCZENIA - STRING!!!
+
 // UI Variables
 const newProject = document.getElementById('newproj-btn'),
   startBtn = document.getElementById('start-btn'),
@@ -216,7 +218,7 @@ const addRoomToDOM = (room) => {
   item.classList.add('room-Li');
   item.id = 'room-Li';
 
-  item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn" id='edit-room-btn'><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`;
+  item.innerHTML = `<span>0${room.id}.</span><span>${room.name}</span><span>Q= XX kW</span><button class="edit-room-btn" id='edit-room-btn' data-num='${room.name}'><i class="fas fa-cog"></i></button><button class="delete-room-btn"><i class="far fa-times-circle"></i></button>`;
 
   roomlist.appendChild(item);
 };
@@ -230,6 +232,7 @@ const addRoomSectionToDOM = (room) => {
   // add class and id to room section
   roomSection.classList.add('room-section', `room-${room.id}`, 'hide');
   roomSection.id = `${room.name}-room`;
+  roomSection.dataset.num = `${room.id}`;
 
   roomSection.innerHTML = `<button class="exit-room main-btn" id="exit-room" ><i class="far fa-times-circle"></i></button>
     <button class="help-btn-room main-btn" id="help-btn-room"><i class="far fa-question-circle"></i></button>
@@ -305,43 +308,7 @@ const addRoomSectionToDOM = (room) => {
 
   mainContainer.appendChild(roomSection);
 
-  // edit room section
-  //   document.addEventListener('click', function (e) {
-  //     if (e.target.classList.contains('.edit-room-btn')) {
-  //       console.log('dziala');
-  //     }
-  //   });
-
-  //   document
-  //     .querySelector('#' + `${room.name}` + '-room')
-  //     .classList.remove('hide');
-
-  //Switch overlap
-  switchOverlap();
-  // Edit & exit room
-  editRoom();
-  exitRoom();
-};
-
-//EDIT & EXIT ROOM
-function editRoom() {
-  const editRoomBtn = document.querySelectorAll('.edit-room-btn');
-
-  editRoomBtn.forEach(function (el) {
-    el.addEventListener('click', editRoomfunc);
-  });
-  function editRoomfunc(el) {}
-  editRoomBtn.forEach(function (el) {
-    const editRoom = () => {
-      console.log('2423');
-      roomSection.classList.remove('hide');
-    };
-
-    el.addEventListener('click', editRoom);
-  });
-}
-
-function exitRoom() {
+  // Exit room function
   const exitRoomBtn = document.querySelectorAll('.exit-room');
 
   exitRoomBtn.forEach(function (el) {
@@ -352,7 +319,37 @@ function exitRoom() {
 
     el.addEventListener('click', exitRoom);
   });
+
+  //Switch overlap
+  switchOverlap();
+  // Edit room
+  editRoom();
+};
+
+//EDIT & EXIT ROOM
+function editRoom() {
+  const roomSection = document.querySelectorAll('.room-section');
+  const editRoomBtn = document.querySelectorAll('.edit-room-btn');
+
+  editRoomBtn.forEach(function (el) {
+    el.addEventListener('click', editRoomfunc);
+  });
+
+  function editRoomfunc(el) {
+    const roomBtnTarget = el.currentTarget;
+    currentRoom = roomBtnTarget.dataset.num;
+    console.log(el.currentRoom);
+
+    roomSection.forEach(function (el) {
+      el.classList.add('hide');
+    });
+
+    document
+      .querySelector('#' + currentRoom + '-room')
+      .classList.remove('hide');
+  }
 }
+
 //SWITCH OVERLAP FUNCTION
 function switchOverlap() {
   //variables
