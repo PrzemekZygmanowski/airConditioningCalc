@@ -203,7 +203,7 @@ const addNewRoom = (e) => {
   }
   console.log('dodaj pokoj');
 };
-// Generaterandom Id
+// Generate random Id
 function generateID() {
   return Math.floor(Math.random() * 10);
 }
@@ -223,7 +223,7 @@ const addRoomToDOM = (room) => {
   roomlist.appendChild(item);
 };
 
-// ADD ROOM AECTION TO DOM
+// ADD ROOM SECTION TO DOM
 const addRoomSectionToDOM = (room) => {
   console.log(room.id);
 
@@ -273,7 +273,7 @@ const addRoomSectionToDOM = (room) => {
         <label for="text">Współczynnik jednoczesności</label>
           <select type=" text" id="people-ratio">
             <option value="1"> Biura i duże sale </option>
-            <option value="2"> Hotele, pokoje wieloosoowe </option>
+            <option value="2"> Hotele, pokoje wieloosobowe </option>
             <option value="3"> Domy towarowe</option>
             <option value="4"> Pomieszczenia techniczne </option>
             <option value="5"> Teatry, kina </option>
@@ -291,7 +291,30 @@ const addRoomSectionToDOM = (room) => {
     </form>
 
 </div>
-<div class='room-overlap light-overlap' id='light'><h3>Zyski ciepła od oświetlenia</h3></div>
+<div class='room-overlap light-overlap' id='light'>
+  <h3>Zyski ciepła od oświetlenia</h3>
+  <p>Zyski ciepła od oświetlenia: <strong>Q=00 kW</strong></p>
+  <p>Powierzchnia: <strong>${room.area} m kwd.</strong></p>
+  <div class="form-control">
+        <label for="text">Rodzaj pomieszczenia</label>
+          <select type=" text" id="room-type">
+            <option value="1"> Magazyny, drogi komunikacyjne w budynkach dla ludzi i samochodów, klatki schodowe, korytarze, schody i wejścia do hal w zakładach, mieszkania, teatry </option>
+            <option value="2">Magazyny z czynnościami odczytywania,
+            spedycja, kantyny, restauracje, zakłady produk- cyjne, proste prace montażowe, komunikacja</option>
+            <option value="3"> Biura z miejscami z dala od okien, biblioteki,
+            przedszkola, sale wykładowe, konferencyjne, pomieszczenia sprzedaży, średnio dokładne prace montażowe</option>
+            <option value="4">Biura typu open-space, elektroniczne przetwa-
+            rzanie danych, sale wykładowe z niewystar- czającym światłem dziennym, dokładne prace montażowe, kuchnie w restauracjach, laboratoria,
+            domy towarowe, hale wystawowe</option>
+            <option value="5"> Duże pomieszczenia biurowe, kreślarnie,
+            grawernie, farbiarnie</option>
+            <option value="6">Badanie farb, montaż precyzyjny, wytwarzanie
+            towarów ozdobnych</option>
+            <option value="7">Montaż części precyzyjnych, jubilerstwo,
+            zegarmistrzostwo, zakłady optyczne, kontrola jakości przy dużych wymaganiach</option>
+          </select>
+  </div>
+</div>
 <div class='room-overlap machine-overlap' id='machine'><h3>Zyski ciepła od urządzeń</h3></div>
 <div class='room-overlap window-overlap' id='window'><h3>Zyski ciepła przez przegrody przezroczyste</h3></div>
 <div class='room-overlap wall-overlap' id='wall'><h3>Zyski ciepła przez przegrody nieprzezroczyste</h3></div>
