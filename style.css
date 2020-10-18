@@ -155,21 +155,34 @@ header * {
 
 .help-element {
   position: absolute;
-  width: 80vh;
+  width: 90vw;
   min-height: 80vh;
   overflow-y: scroll;
-  top: 50%;
-  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translate(-50%, -50%);
   background-color: var(--secondaryColor);
   border: 2px solid var(--primaryColor);
-  border-radius: 10%;
+  border-radius: 15px;
   text-align: center;
   z-index: 4;
+}
+
+.header-help {
+  top: 10vh;
+  left: 5vw;
+}
+
+.header-help,
+.start-help {
+  transition: var(--transition);
+  transform: scale(0);
+}
+
+.header-help.active,
+.start-help.active {
+  transform: scale(1);
 }
 
 /* .active-alert p {

@@ -8,6 +8,12 @@ const newProject = document.getElementById('newproj-btn'),
   exitBtn = document.getElementById('exit-btn'),
   logInBtn = document.getElementById('login-btn'),
   regBtn = document.getElementById('registration-btn'),
+  headerHelpBtn = document.getElementById('help-btn-header'),
+  headerHelpWindow = document.getElementById('header-help-alert'),
+  closeHeaderAlert = document.getElementById('exit-header-help-btn'),
+  startHelpBtn = document.getElementById('help-btn-start'),
+  startHelpWindow = document.getElementById('start-help-alert'),
+  closeStartAlert = document.getElementById('exit-start-help-btn'),
   helpBtn = document.getElementsByClassName('help-btn');
 
 // Start Project function
@@ -17,7 +23,6 @@ const startProj = () => {
 };
 
 // Close Start Section Function
-
 const closeStartSection = () => {
   mainContainer.classList.remove('active');
   startSection.classList.remove('active');
@@ -28,23 +33,42 @@ const createNewProject = () => {
   console.log('done');
 };
 
-// show help function
-const showHelp = () => {
-  const helpEl = document.createElement('div');
-
-  helpEl.classList.add('help-element');
-
-  helpEl.innerHTML = `<h2>Pomoc</h2><p>Tutaj będzie pojawiała się pomoc dotycząca aplikacji i zagadnień merytorycznych <i class="far fa-smile-wink"></i></p><button class='exit-help-btn main-btn'id='close-help'><i class="far fa-times-circle"></i></button>`;
-
-  mainContainer.appendChild(helpEl);
-
-  // close alert - delete alert from DOM
-  const closeHelpBtn = document.getElementById('close-help');
-
-  closeHelpBtn.addEventListener('click', function () {
-    body.removeChild(helpEl);
-  });
+// show header help-alert function
+const headerHelpAlert = () => {
+  headerHelpWindow.classList.add('active');
 };
+
+// Close header help alert function
+const closeHeaderHelpAlert = () => {
+  headerHelpWindow.classList.remove('active');
+};
+
+// show start help-alert function
+const startHelpAlert = () => {
+  startHelpWindow.classList.add('active');
+};
+
+// Close start help alert function
+const closeStartHelpAlert = () => {
+  startHelpWindow.classList.remove('active');
+};
+
+// const startHelpAlert = () => {
+//   const helpEl = document.createElement('div');
+
+//   helpEl.classList.add('help-element');
+
+//   helpEl.innerHTML = `<h2>Pomoc</h2><p>Tutaj będzie pojawiała się pomoc dotycząca aplikacji i zagadnień merytorycznych <i class="far fa-smile-wink"></i></p><button class='exit-help-btn main-btn'id='close-help'><i class="far fa-times-circle"></i></button>`;
+
+//   mainContainer.appendChild(helpEl);
+
+//   // close alert - delete alert from DOM
+//   const closeHelpBtn = document.getElementById('close-help');
+
+//   closeHelpBtn.addEventListener('click', function () {
+//     body.removeChild(helpEl);
+//   });
+// };
 
 // Show Alert function
 const showAlert = () => {
@@ -62,14 +86,6 @@ const showAlert = () => {
   closeAlertBtn.addEventListener('click', function () {
     mainContainer.removeChild(alertEl);
   });
-
-  // // LISTENERS TO DYNAMIC ELEMENTS
-  // alertEl.addEventListener('click', function (e) {
-  //     if (e.target.classList.contains('.exit-alert-btn')) {
-  //         console.log('dziala');
-  //         // mainContainer.removeChild(alertEl)
-  //     }
-  // })
 
   setTimeout(function () {
     mainContainer.removeChild(alertEl);
@@ -130,7 +146,6 @@ const createProject = (e) => {
     <input class='add-room-btn start-btn' id="add-room-btn" type="submit" value="Dodaj">
     </form>
         </div>
-        
         <div class="rooms-container">
         <h3>Pomieszczenia</h3>
         <ul id="room-list" class="room-list">
@@ -138,9 +153,8 @@ const createProject = (e) => {
 
         </div>
         <button class="help-btn-section main-btn" id="help-btn-start"><i
-                class="far fa-question-circle"></i></button>      
-        </div>     
-                 
+                class="far fa-question-circle"></i></button>
+        </div>
     </div>`;
 
   mainContainer.appendChild(newProjectSection);
@@ -314,6 +328,17 @@ const addRoomSectionToDOM = (room) => {
             zegarmistrzostwo, zakłady optyczne, kontrola jakości przy dużych wymaganiach</option>
           </select>
   </div>
+    <div class="form-control">
+      <label for="text">Rodzaj oświetlenia:</label>
+        <select type=" text" id="light-type">
+          <option value="1"> Żarowe </option>
+          <option value="2"> Fluorescencyjne </option>
+        </select>
+      </div>
+  <div class="form-control">
+    <label for="number">Moc oświetlenia</label>
+    <input type="range" min='20' max='25' value='22' id="light-power">
+  </div>
 </div>
 <div class='room-overlap machine-overlap' id='machine'><h3>Zyski ciepła od urządzeń</h3></div>
 <div class='room-overlap window-overlap' id='window'><h3>Zyski ciepła przez przegrody przezroczyste</h3></div>
@@ -417,10 +442,15 @@ function switchOverlap() {
 
 // LISTENERS
 startBtn.addEventListener('click', startProj);
+headerHelpBtn.addEventListener('click', headerHelpAlert);
+closeHeaderAlert.addEventListener('click', closeHeaderHelpAlert);
+startHelpBtn.addEventListener('click', startHelpAlert);
+closeStartAlert.addEventListener('click', closeStartHelpAlert);
 newProject.addEventListener('click', createProject);
 exitBtn.addEventListener('click', closeStartSection);
 regBtn.addEventListener('click', showAlert);
 logInBtn.addEventListener('click', showAlert);
+
 // helpBtn.addEventListener('click', function () {
 //     console.log('dziala');
 // });

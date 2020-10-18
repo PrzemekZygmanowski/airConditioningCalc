@@ -14,11 +14,6 @@
   <body>
     <header>
       <h1 class="header-tittle">Kalkulator Zysków Ciepła</h1>
-      <!-- <p>Chciałbym zademonstrować swój projekt kalkulatora zysków ciepła wspomagającego projektowanie
-            instalacji klimatyzacji dla wszelakich budynków. Kalkulator pozwoli Ci oszacować zyski ciepła dla
-            pomieszczeń oraz wstępnie określić wymaganą moc klimatyzatora dla pomieszczenia. Aby rozpocząć wybierz jedną
-            z poniższych opcji lub wciśnij znak zapytania by uzyskać
-            pomoc.</p> -->
       <h2 class="header-tittle2">
         Oblicz jaką moc powinien mieć Twój klimatyzator
       </h2>
@@ -31,7 +26,22 @@
         <i class="far fa-question-circle"></i>
       </button>
     </header>
-
+    <div class="help-element header-help" id="header-help-alert">
+      <button class="exit-btn main-btn" id="exit-header-help-btn">
+        <i class="far fa-times-circle"></i>
+      </button>
+      <h2>Cześć</h2>
+      <p>
+        Chciałbym zademonstrować swój projekt kalkulatora zysków ciepła
+        wspomagającego projektowanie instalacji klimatyzacji dla wszelakich
+        budynków. Kalkulator pozwoli Ci oszacować zyski ciepła dla pomieszczeń
+        oraz wstępnie określić wymaganą moc klimatyzatora dla pomieszczenia. Aby
+        rozpocząć wybierz jedną z poniższych opcji lub wciśnij znak zapytania by
+        uzyskać pomoc.
+      </p>
+      <p>pozdrawiam</p>
+      <p>Przemek Zygmanowski</p>
+    </div>
     <div class="main-container" id="main-container">
       <section class="start-section" id="start-section">
         <button class="exit-btn main-btn" id="exit-btn">
@@ -57,6 +67,22 @@
           <button class="start-btn" id="newproj-btn">
             <p>Stwórz projekt</p>
           </button>
+        </div>
+        <div class="help-element start-help" id="start-help-alert">
+          <button class="exit-btn main-btn" id="exit-start-help-btn">
+            <i class="far fa-times-circle"></i>
+          </button>
+          <h2>Pomoc</h2>
+          <p>
+            W tej chwili jedyną dostępną opcją kalkulatora jest stworzenie
+            pojedynczego projektu. Nad pozostałymi opcjami pracuje cały czas. W
+            założeniu po zarejestrowaniu i zalogowaniu użytkownik będzie mógł
+            stworzyć więcej niż jeden projekt, zapisać każdy z nich, dla każdego
+            z projektów nie będzie ograniczeń liczby pomieszczeń i będzie
+            możliwość wyeksportowania obliczeń do PDF lub Excela. Opcja
+            pojedynczego projektu jest idealna do szybkich obliczeń pojedynczego
+            pomieszczenia lub domku jednorodzinnego.
+          </p>
         </div>
         <button class="help-btn" id="help-btn-start">
           <i class="far fa-question-circle"></i>
